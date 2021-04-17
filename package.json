@@ -1,0 +1,55 @@
+{
+  "name": "cz-conventional-changelog-jira-first",
+  "version": "1.0.0",
+  "description": "This is a typeScript implementation of a commitizen adapter for conventional changelogs, with the jira id as first item in the header.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "commit": "git cz",
+    "prepare": "husky install",
+    "prepublish": "tsc"
+  },
+  "keywords": [],
+  "author": "Michael Kopf",
+  "license": "MIT",
+  "dependencies": {
+    "@types/git-branch": "^2.0.1",
+    "@types/inquirer": "^7.3.1",
+    "@types/lodash": "^4.14.168",
+    "chalk": "^4.1.0",
+    "commitizen": "^4.2.3",
+    "conventional-commit-types": "^3.0.0",
+    "git-branch": "^2.0.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@commitlint/config-conventional": "^12.1.1",
+    "commitlint": "^12.1.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^6.0.0",
+    "prettier": "^2.2.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {}
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
