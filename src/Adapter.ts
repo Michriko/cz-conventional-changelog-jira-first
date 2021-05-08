@@ -8,7 +8,7 @@ import {
   QuestionCollection,
 } from "inquirer";
 import { max } from "lodash";
-import chalk from "../node_modules/chalk/index";
+import { Chalk, red, green } from "chalk";
 import { Answers } from "./models/answers.model";
 import { Step } from "./models/step.enum";
 import {
@@ -135,11 +135,11 @@ export class Adapter implements IAdapter {
           subject,
           this.configuration.disableSubjectLowerCase!
         );
-        const color =
+        const color: Chalk =
           formatted.length <=
           maxSubjectLength(answers, this.configuration.maxHeaderWidth!)
-            ? chalk.green
-            : chalk.red;
+            ? green
+            : red;
         return color(`(${formatted.length})` + subject);
       },
       filter: (subject: string) =>
