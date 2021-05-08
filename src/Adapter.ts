@@ -24,8 +24,8 @@ export class Adapter implements IAdapter {
   async prompter(
     inquirer: Inquirer,
     commit: (
-      error: Error | null,
-      template: string,
+      errorOrTemplate: Error | string,
+      templateOrOverrideOptions?: string | unknown,
       overrideOptions?: unknown
     ) => unknown
   ): Promise<void> {
@@ -45,10 +45,7 @@ export class Adapter implements IAdapter {
 
     const answers: Answers = await inquirer.prompt(questions);
 
-    commit(
-      null,
-      formatCommitMessage(answers, this.configuration.maxLineWidth!)
-    );
+    commit(formatCommitMessage(answers, this.configuration.maxLineWidth!));
   }
 
   private jiraQuestion(): InputQuestion {

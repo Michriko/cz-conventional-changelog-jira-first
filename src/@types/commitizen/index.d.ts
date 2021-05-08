@@ -21,9 +21,18 @@ declare module "commitizen" {
   export interface IAdapter {
     prompter: (
       inquirer: Inquirer,
+      
+      /**
+       * This is a little hacky!
+       * The first parameter, the error, is optional. If there is no error, 
+       * the first parameter is the template and the second one beckomes the overrideOptions
+       * @param errorOrTemplate error of type Error, otherwise the template
+       * @param templateOrOverrideOptions if there is an error, this is the template, if there is no error, here should go overrideOptions
+       * @param overrideOptions only used, when there is an error, then here goes the override options.
+       */
       commit: (
-        error: Error | null,
-        template: string,
+        errorOrTemplate: Error | string,
+        templateOrOverrideOptions?: string | unknown,
         overrideOptions?: unknown
       ) => unknown
     ) => void;

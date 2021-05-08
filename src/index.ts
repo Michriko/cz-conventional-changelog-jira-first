@@ -13,8 +13,8 @@ const adapter = new Adapter(config);
 export function prompter(
   inquirer: Inquirer,
   commit: (
-    error: Error | null,
-    template: string,
+    errorOrTemplate: Error | string,
+    templateOrOverrideOptions?: string | unknown,
     overrideOptions?: unknown
   ) => unknown
 ): Promise<void> {
