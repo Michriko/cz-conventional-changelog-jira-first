@@ -7,4 +7,5 @@ const config: ICommitizenConfig = defaults(
   defaultConfiguration,
   configLoader.load()
 );
+
 export default new Adapter(config);
