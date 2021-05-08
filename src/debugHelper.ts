@@ -1,5 +1,5 @@
 import inquirer from "inquirer";
-import Adapter from "./index";
+import { prompter } from "./index";
 import { inverse, yellow } from "chalk";
 
 function printCommitMessage(_: Error | null, template: string): void {
@@ -7,4 +7,4 @@ function printCommitMessage(_: Error | null, template: string): void {
   console.log(inverse.bold(template));
 }
 
-Adapter.prompter(inquirer, printCommitMessage);
+prompter(inquirer, printCommitMessage);
