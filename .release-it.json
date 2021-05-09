@@ -1,5 +1,6 @@
 {
   "github": {
-    "release": true
+    "release": true,
+    "skip-checks": true
   }
 }
