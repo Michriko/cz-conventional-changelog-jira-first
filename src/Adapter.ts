@@ -137,7 +137,7 @@ export class Adapter implements IAdapter {
           maxSubjectLength(answers, this.configuration.maxHeaderWidth!)
             ? green
             : red;
-        return color(`(${formatted.length})` + subject);
+        return color(`(${formatted.length})\n` + subject);
       },
       filter: (subject: string) =>
         formatSubject(subject, this.configuration.disableSubjectLowerCase!),
@@ -188,6 +188,7 @@ export class Adapter implements IAdapter {
       type: "confirm",
       name: Step.IsIssueAffected,
       message: "Does this change affect any open issues?",
+      default: false
     };
   }
 
