@@ -32,6 +32,10 @@
     "url": "https://github.com/Michriko/cz-conventional-changelog-jira-first/issues"
   },
   "homepage": "https://github.com/Michriko/cz-conventional-changelog-jira-first#readme",
+  "engines": {
+    "npm": ">=5.8.0",
+    "node": ">=10.15.2"
+  },
   "dependencies": {
     "@types/git-branch": "^2.0.1",
     "@types/inquirer": "^7.3.1",
