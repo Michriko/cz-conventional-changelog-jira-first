@@ -1,6 +1,5 @@
 import { compact } from 'lodash';
-import type { IOptions } from '../../node_modules/word-wrap/index';
-import wrap from '../../node_modules/word-wrap/index';
+import wrap from 'word-wrap/index';
 import type { Answers } from '../models/answers.model';
 
 export function headerLength(answers: Answers): number {
@@ -25,7 +24,7 @@ export function formatSubject(subject: string, disableSubjectToLowerCase?: boole
 }
 
 export function formatCommitMessage(answers: Answers, maxLineWidth: number): string {
-    const wrapOptions: IOptions = {
+    const wrapOptions: wrap.IOptions = {
         trim: true,
         cut: false,
         newline: '\n',
