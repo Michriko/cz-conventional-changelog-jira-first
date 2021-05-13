@@ -1,0 +1,23 @@
+#project configs and IDE settings
+.git
+.github
+.husky
+.vscode
+.eslintrc
+.gitignore
+.prettierrc
+.realese-it.json
+tsconfig.json
+
+#excluded directories
+node_modules
+src
+
+#files for debugging
+dist/**/*.ts.map
+dist/**/*.js.map
+dist/debugHelper.d.ts
+dist/debugHelper.js
+
+#typescript build info
+dist/tsconfig.tsbuildinfo
