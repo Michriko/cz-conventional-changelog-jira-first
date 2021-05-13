@@ -23,17 +23,25 @@
 ## Install
 First install the package via npm:
 ```sh
-npm i cz-conventional-changelog-jira-first
+npm i --save-dev cz-conventional-changelog-jira-first
 ```
 
-As every commitizen adapter you need to add a refenrece to this adapter in your commitizen config. 
+As every commitizen adapter you need to add a refenrece to this adapter in your commitizen config in your package.json
 ```json
 "commitizen": {
   "path": "./node_modules/cz-conventional-changelog-jira-first"
 }
 ```
+
+or your commitizen config file .czrz
+```json
+{
+  "path": "./node_modules/cz-conventional-changelog-jira-first"
+}
+
+```
 ## Usage
-Just use your default commitizen command:
+Just use your configured default commitizen command:
 
 ```sh
 git cz
@@ -48,7 +56,7 @@ git commit
 ```
 
 ## Debugging
-For easier debugging there is a helper Script, that runs the adapter without commiting. It just prints the generated commitmessage to the console.
+For easier debugging there is a helper Script, that runs the adapter without commiting. It just prints the generated commitmessage to the console. This script is not part of the npm package. Its only used for development.
 I added VScode launchsettings for easy to go debugging and launching the helper. If you are not using VSCode, you can start the script with first calling the typescript transpiler and run the script afterwards with nodejs.
 
 ```sh
