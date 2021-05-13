@@ -6,7 +6,7 @@
 .eslintrc
 .gitignore
 .prettierrc
-.realese-it.json
+release-it.json
 tsconfig.json
 
 #excluded directories
