@@ -1,6 +1,6 @@
 {
   "name": "cz-conventional-changelog-jira-first",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "This is a typeScript implementation of a commitizen adapter for conventional changelogs, with the jira id as first item in the header.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
