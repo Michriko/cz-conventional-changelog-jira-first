@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Launch Program",
       "program": "${workspaceFolder}/src/debugHelper.ts",
-      "preLaunchTask": "tsc: build - tsconfig.json",
+      "preLaunchTask": "tsc: build - tsconfig.debug.json",
       "outFiles": ["${workspaceFolder}/dist/**/*.js"],
       "console": "integratedTerminal"
     }
