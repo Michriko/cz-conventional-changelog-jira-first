@@ -31,8 +31,8 @@ export function formatCommitMessage(answers: Answers, maxLineWidth: number): str
         indent: '',
         width: maxLineWidth,
     };
-    const scope = answers.scope ? `(${answers.scope}):` : '';
-    const head = `${answers.jira}: ${answers.type}: ${scope} ${answers.subject}`;
+    const scope = answers.scope ? `(${answers.scope})` : '';
+    const head = `${answers.jira}: ${answers.type}${scope}: ${answers.subject}`;
     const body = wrap((answers.body ?? answers.breakingBody ?? answers.issueBody)!, wrapOptions);
     const breaking = !answers.isBreaking ? false : wrap(`BREAKING CHANGE: ${answers.breaking?.trim()}`, wrapOptions);
     const issues = answers.isIssueAffected ? wrap(answers.issueReference!.trim(), wrapOptions) : false;
