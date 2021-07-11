@@ -9,8 +9,8 @@ function printCommitMessage(template: string): void {
 
 prompter(inquirer, (errorOrTemplate: Error | string) => {
     if (!(errorOrTemplate instanceof Error)) {
-        printCommitMessage(errorOrTemplate!);
+        printCommitMessage(errorOrTemplate);
     } else {
-        console.error(errorOrTemplate!);
+        console.error(errorOrTemplate);
     }
 });
