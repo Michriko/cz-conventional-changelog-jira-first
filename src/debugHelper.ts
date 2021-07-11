@@ -3,8 +3,14 @@ import { prompter } from './index';
 import { inverse, yellow } from 'chalk';
 
 function printCommitMessage(template: string): void {
-    console.log(yellow.bold('\n\n\nYour commit message would be:'));
-    console.log(inverse.bold(template));
+    console.debug(yellow.bold('\n\n\nYour commit message would be:'));
+    console.debug(inverse.bold(template));
 }
 
-prompter(inquirer, (template) => printCommitMessage(template as string));
+prompter(inquirer, (errorOrTemplate: Error | string) => {
+    if (!(errorOrTemplate instanceof Error)) {
+        printCommitMessage(errorOrTemplate!);
+    } else {
+        console.error(errorOrTemplate!);
+    }
+});
