@@ -14,7 +14,7 @@
 </p>
 
 
-> This is a typeScript implementation of a commitizen adapter for conventional changelogs, with the jira id as first item in the commit message head. This Project is in an early state but will be improved soon. Any Contribution is appreciated.
+> This is a TypeScript implementation of a commitizen adapter for conventional changelogs, with the jira id as first item in the commit message head. This Project is in an early state but will be improved soon. Any Contribution is appreciated.
 
 ## Prerequisites
 - npm >=5.8.0
@@ -26,7 +26,7 @@ First install the package via npm:
 npm i --save-dev cz-conventional-changelog-jira-first
 ```
 
-As every commitizen adapter you need to add a refenrece to this adapter in your commitizen config in your package.json
+As every commitizen adapter, you need to add a reference to this adapter in your commitizen config in your package.json
 ```json
 "commitizen": {
   "path": "./node_modules/cz-conventional-changelog-jira-first"
@@ -56,8 +56,8 @@ git commit
 ```
 
 ## Debugging
-For easier debugging there is a helper Script, that runs the adapter without commiting. It just prints the generated commitmessage to the console. This script is not part of the npm package. Its only used for development.
-I added VScode launchsettings for easy to go debugging and launching the helper. If you are not using VSCode, you can start the script with first calling the typescript transpiler and run the script afterwards with nodejs.
+For easier debugging, there is a helper script that runs the adapter without committing. It just prints the generated commit message to the console. This script is not part of the npm package. It's only used for development.
+I added VSCode launchsettings for easy to go debugging and launching the helper. If you are not using VSCode, you can start the script with first calling the TypeScript transpiler and run the script afterwards with NodeJs.
 
 ```sh
 tsc
