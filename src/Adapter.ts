@@ -1,4 +1,4 @@
-import type { IAdapter, ICommitizenConfig } from 'commitizen';
+import type { Commit, IAdapter, ICommitizenConfig } from 'commitizen';
 import { sync } from 'git-branch';
 import type { ConfirmQuestion, InputQuestion, Inquirer, ListQuestion, QuestionCollection } from 'inquirer';
 import { max } from 'lodash';
@@ -11,14 +11,7 @@ import { formatCommitMessage, formatSubject, headerLength, maxSubjectLength } fr
 export class Adapter implements IAdapter {
     constructor(private readonly configuration: ICommitizenConfig) {}
 
-    async prompter(
-        inquirer: Inquirer,
-        commit: (
-            errorOrTemplate: Error | string,
-            templateOrOverrideOptions?: string | unknown,
-            overrideOptions?: unknown,
-        ) => unknown,
-    ): Promise<void> {
+    async prompter(inquirer: Inquirer, commit: Commit): Promise<void> {
         const questions: QuestionCollection = [
             this.jiraQuestion(),
             this.typeQuestion(),
@@ -41,22 +34,22 @@ export class Adapter implements IAdapter {
     private jiraQuestion(): InputQuestion {
         const branchName = sync();
         const matched = branchName.match(/(?<jiraIssue>(?<!([A-Z0-9]{1,10})-?)[A-Z0-9]+-\d+)/);
-        const defaultJiraIsse = matched?.groups?.['jiraIssue'] ?? '';
+        const defaultJiraIssue = matched?.groups?.['jiraIssue'] ?? '';
 
         return {
             name: Step.Jira,
             message: 'Enter JIRA issue (e.g. BLA-123) :',
-            default: defaultJiraIsse,
+            default: defaultJiraIssue,
             validate: (input: string): boolean => /^(?<!([A-Z0-9]{1,10})-?)[A-Z0-9]+-\d+$/.test(input),
             filter: (input: string): string => input.toUpperCase(),
         };
     }
 
     private typeQuestion(): ListQuestion {
-        const length = max(Object.values(this.configuration.types).map((type) => type.title.length))! + 1;
+        const maxTitleLength = max(Object.values(this.configuration.types).map((type) => type.title.length))! + 1;
         const choices: { name: string; value: string }[] = Object.entries(this.configuration.types).map(
             ([key, value]) => ({
-                name: `${value.title.padEnd(length)}${value.description}`,
+                name: `${value.title.padEnd(maxTitleLength)}${value.description}`,
                 value: key,
             }),
         );
@@ -94,11 +87,11 @@ export class Adapter implements IAdapter {
                     return 'Subject is required';
                 }
                 const prefixlength = headerLength(answers);
-                const currentHeaderLength = prefixlength + formatted.length + 2;
+                const currentHeaderLength = headerLength({ ...answers, subject: formatted });
                 if (currentHeaderLength > this.configuration.maxHeaderWidth) {
                     return `Subject length must be less than or equal to ${
                         this.configuration.maxHeaderWidth - prefixlength
-                    } caharcters. Current length is ${formatted.length}.`;
+                    } characters. Current length is ${formatted.length}.`;
                 }
                 return true;
             },

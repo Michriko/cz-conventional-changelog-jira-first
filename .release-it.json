@@ -1,4 +1,7 @@
 {
+  "git": {
+    "commitMessage": "chore(bump version): release version ${version}"
+  },
   "github": {
     "release": true,
     "skip-checks": true
